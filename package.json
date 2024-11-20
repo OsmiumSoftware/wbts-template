@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "network-information-types": "^0.1.1"
+  },
+  "scripts": {
+    "sh_build": "npm run sh_copy_ts && npm run ts && npm run pack",
+    "ts": "npx tsc",
+    "sh_copy_ts": "rsync -av --exclude='*.ts' --exclude='*.d.ts' src/ build",
+    "sh_clean": "rm -rf build dist && mkdir build dist",
+    "pre": "node ./pre.js",
+    "sh_full": "npm run sh_clean && npm run sh_build",
+    "pack": "npx webpack",
+    "build": "webpack --mode=production --node-env=production",
+    "build:dev": "webpack --mode=development",
+    "build:prod": "webpack --mode=production --node-env=production",
+    "watch": "webpack --watch"
+  },
+  "devDependencies": {
+    "@webpack-cli/generators": "^3.0.7",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.3",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "version": "1.0.0",
+  "description": "WebBrew Template Repo",
+  "name": "wb-template"
+}
